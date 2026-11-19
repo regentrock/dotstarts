@@ -1,0 +1,158 @@
+/* ================= HEADER ================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(19, 25, 31, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100% - 1.5rem, var(--maxw));
+  margin-inline: auto;
+  height: 74px;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex: none;
+}
+
+.logoImg {
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ---------- Links ---------- */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.links a:not(.cta) {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 0.4rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.links a:not(.cta):hover {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* Botão CTA */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--on-accent);
+  transition: background 0.2s;
+}
+
+.cta:hover {
+  background: var(--accent-hover);
+  color: var(--on-accent);
+}
+
+/* ---------- Toggle (mobile) ---------- */
+.toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  cursor: pointer;
+  place-items: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.iconClose {
+  display: none;
+}
+
+.toggle[aria-expanded='true'] .iconMenu {
+  display: none;
+}
+
+.toggle[aria-expanded='true'] .iconClose {
+  display: block;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 960px) {
+  .toggle {
+    display: grid;
+  }
+
+  .links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 0.8rem 1.5rem 1.5rem;
+  }
+
+  .links.open {
+    display: flex;
+  }
+
+  .links a:not(.cta) {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .links li:last-child {
+    margin-top: 1rem;
+  }
+
+  .cta {
+    width: 100%;
+  }
+}
